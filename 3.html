@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skolplanerare – Meriträknare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <h1 class="logo">Skolplanerare</h1>
+    <nav>
+      <a href="2.html">Kalender</a>
+      <a href="index.html">Hem</a>
+    </nav>
+  </header>
+
+  <section class="content">
+    <div class="calculator">
+      <h1>Meriträknare</h1>
+      <p class="subtitle">Fyll i dina kurser, betyg och poäng.</p>
+
+      <table id="gradesTable">
+        <thead>
+          <tr>
+            <th>Kurs</th>
+            <th>Betyg</th>
+            <th>Poäng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="letters"  value="kurs1"></td>
+            <td>
+              <select class="grade">
+                <option value="20">A</option>
+                <option value="17.5">B</option>
+                <option value="15">C</option>
+                <option value="12.5">D</option>
+                <option value="10">E</option>
+                <option value="0">F</option>
+              </select>
+            </td>
+            <td><input type="number" class="points" value="100"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button onclick="addRow()">Lägg till kurs</button>
+      <button onclick="calculateMerit()">Räkna meritvärde</button>
+
+      <div class="result" id="result"></div>
+    </div>
+  </section>
+
+  <script>
+    function addRow() {
+      const table = document.querySelector('#gradesTable tbody');
+      const rowCount = table.rows.length + 1;
+
+      const row = table.insertRow();
+      row.innerHTML = `
+        <td><input type="text"  value="kurs"></td>
+        <td>
+          <select class="grade">
+            <option value="20">A</option>
+            <option value="17.5">B</option>
+            <option value="15">C</option>
+            <option value="12.5">D</option>
+            <option value="10">E</option>
+            <option value="0">F</option>
+          </select>
+        </td>
+        <td><input type="number" class="points" value="100"></td>
+      `;
+    }
+
+    function calculateMerit() {
+      const grades = document.querySelectorAll('.grade');
+      const points = document.querySelectorAll('.points');
+
+      let totalPoints = 0;
+      let weightedSum = 0;
+
+      for (let i = 0; i < grades.length; i++) {
+        weightedSum += parseFloat(grades[i].value) * parseFloat(points[i].value);
+        totalPoints += parseFloat(points[i].value);
+      }
+
+      const merit = totalPoints === 0 ? 0 : (weightedSum / totalPoints).toFixed(2);
+      document.getElementById('result').innerText =
+        `Ditt meritvärde är: ${merit}`;
+    }
+  </script>
+
+</body>
+</html>
+

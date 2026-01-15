@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skolplanerare</title>
+  <link rel="stylesheet" href="kalender.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+  integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  <header class="navbar">
+    <h1 class="logo">Skolplanerare</h1>
+    <nav>
+      <a href="3.html">Räknare</a>
+      <a href="index.html">Hem</a>
+    </nav>
+  </header>
+    <div class="calendar"> 
+         <div class="header">
+            <div id="prev" class="btn"><i class="fa-solid fa-arrow-left"></i></div>
+            <div id="month-year"></div>
+            <div id="next" class="btn"><i class="fa-solid fa-arrow-right"></i></div>
+
+        </div>
+        <div class="weekday">
+            <div>sun</div>
+            <div>mon</div>
+            <div>tue</div>
+            <div>wed</div>
+            <div>thu</div>
+            <div>fri</div>
+            <div>sut</div>
+            
+        </div>
+        <div class="days" id="days"></div>
+
+    </div>
+
+ <script src="kalender.js"></script>
+  
+</body>
+</html>
